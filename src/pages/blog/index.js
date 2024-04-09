@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
 
@@ -10,6 +10,7 @@ export const query = graphql`
         frontmatter {
           title
           date
+          slug
         }
         excerpt
       }
@@ -26,7 +27,12 @@ const Blog = ({ data }) => {
         <div>
           <p>{node.frontmatter.date}</p>
           <h2>{node.frontmatter.title} </h2>
-          <p>{node.excerpt}</p>
+          {/* <p>{node.excerpt}</p> */}
+          <button> 
+
+            <Link to={`/blog/${node.frontmatter.slug}`}> Leer más</Link>  
+          
+          </button>
           <hr/>
           {/* <li key={node.name}>{node.name}</li> */}
         </div>
